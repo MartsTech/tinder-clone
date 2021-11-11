@@ -26,15 +26,6 @@ yarn check-types ||
     false;
 )
 
-# If everything passes... Now we can commit
-echo '✨ Trying to build now...'
-
-yarn build ||
-(
-    echo '❌ Next build failed: View the errors above to see why.'
-    false;
-)
-
 cd ../
 
 # If everything passes... Now we can commit
