@@ -1,0 +1,37 @@
+{
+  "name": "tinder-clone",
+  "version": "1.0.0",
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "eject": "expo eject",
+    "format": "prettier --write ./src",
+    "check-format": "prettier --check ./src",
+    "check-lint": "eslint ./src --ext ts --ext tsx",
+    "check-types": "tsc --pretty --noEmit",
+    "test-all": "yarn check-format && yarn check-lint && yarn check-types && yarn build"
+  },
+  "dependencies": {
+    "expo": "~43.0.2",
+    "expo-status-bar": "~1.1.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-native": "0.64.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@types/react": "~17.0.21",
+    "@types/react-native": "~0.64.12",
+    "@typescript-eslint/eslint-plugin": "^5.3.1",
+    "@typescript-eslint/parser": "^5.3.1",
+    "eslint": ">=5.16.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-react": "^7.27.0",
+    "prettier": "^2.4.1",
+    "typescript": "~4.3.5"
+  },
+  "private": true
+}

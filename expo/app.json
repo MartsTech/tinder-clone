@@ -1,0 +1,31 @@
+{
+  "expo": {
+    "scheme": "exp",
+    "userInterfaceStyle": "automatic",
+    "name": "Tinder Clone",
+    "description": "Tinder Clone created with React Native and Expo",
+    "slug": "tinder-clone",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/meta/icon.png",
+    "splash": {
+      "image": "./assets/meta/icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/meta/icon.png",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    "githubUrl": "https://github.com/MartsTech/tinder-clone"
+  }
+}
