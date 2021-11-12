@@ -7,9 +7,9 @@
     "slug": "tinder-clone",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/meta/icon.png",
+    "icon": "./assets/images/icon.png",
     "splash": {
-      "image": "./assets/meta/icon.png",
+      "image": "./assets/images/icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -22,7 +22,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/meta/icon.png",
+        "foregroundImage": "./assets/images/icon.png",
         "backgroundColor": "#FFFFFF"
       }
     },
