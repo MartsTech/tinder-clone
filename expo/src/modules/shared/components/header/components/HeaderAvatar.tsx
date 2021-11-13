@@ -1,4 +1,3 @@
-import { observer } from "mobx-react-lite";
 import React from "react";
 import { Image, StyleSheet, TouchableOpacity } from "react-native";
 import { useStore } from "../../../../../stores/store";
@@ -13,7 +12,7 @@ const HeaderAvatar = () => {
   );
 };
 
-export default observer(HeaderAvatar);
+export default HeaderAvatar;
 
 const styles = StyleSheet.create({
   avatar: {

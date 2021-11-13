@@ -3,10 +3,11 @@ import {
   signInWithCredential,
   User as FirebaseUser,
 } from "@firebase/auth";
+import { doc, serverTimestamp, setDoc } from "@firebase/firestore";
 import { AuthSessionResult } from "expo-auth-session";
 import { makeAutoObservable, runInAction } from "mobx";
 import { User } from "../types/user";
-import { auth } from "../utils/firebase";
+import { auth, db } from "../utils/firebase";
 import { resetStore } from "./store";
 
 class UserStore {
@@ -43,6 +44,7 @@ class UserStore {
   setUser = (user: FirebaseUser | null) => {
     if (user) {
       this.user = {
+        uid: user.uid,
         email: user.email!,
         displayName: user.displayName!,
         photoURL: user.photoURL!,
@@ -52,6 +54,26 @@ class UserStore {
     }
 
     this.loading = false;
+  };
+
+  updateUserProfile = async (
+    image: string,
+    job: string,
+    age: number,
+    callback: () => void
+  ) => {
+    if (!this.user) return;
+
+    await setDoc(doc(db, "users", this.user.uid), {
+      id: this.user.uid,
+      displayName: this.user.displayName,
+      photoURL: image,
+      job,
+      age,
+      timestamp: serverTimestamp(),
+    });
+
+    callback();
   };
 }
 
