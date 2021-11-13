@@ -7,9 +7,9 @@ import AppNavigator from "./components/AppNavigator";
 import AuthNavigator from "./components/AuthNavigator";
 
 const Navigation = () => {
-  const { user, loading } = useStore().userStore;
+  const { user, userLoading } = useStore().userStore;
 
-  if (!user && loading) {
+  if (!user && userLoading) {
     return <Loading />;
   }
 

@@ -1,27 +1,20 @@
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
+import { Profile } from "../../../types/profile";
 
 interface CardProps {
-  card: {
-    firstName: string;
-    lastName: string;
-    photoURL: string;
-    job: string;
-    age: number;
-  };
+  card: Profile;
 }
 
 const Card: React.FC<CardProps> = ({ card }) => {
-  const { firstName, lastName, photoURL, job, age } = card;
+  const { displayName, photoURL, job, age } = card;
 
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={{ uri: photoURL }} />
       <View style={styles.details}>
         <View>
-          <Text style={styles.name}>
-            {firstName} {lastName}
-          </Text>
+          <Text style={styles.name}>{displayName}</Text>
           <Text>{job}</Text>
         </View>
         <Text style={styles.age}>{age}</Text>

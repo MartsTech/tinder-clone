@@ -1,44 +1,51 @@
 import {
   GoogleAuthProvider,
+  onAuthStateChanged,
   signInWithCredential,
   User as FirebaseUser,
 } from "@firebase/auth";
-import { doc, serverTimestamp, setDoc } from "@firebase/firestore";
+import { doc, serverTimestamp, setDoc, Unsubscribe } from "@firebase/firestore";
 import { AuthSessionResult } from "expo-auth-session";
-import { makeAutoObservable, runInAction } from "mobx";
+import { makeAutoObservable, reaction } from "mobx";
 import { User } from "../types/user";
 import { auth, db } from "../utils/firebase";
-import { resetStore } from "./store";
+import { resetStore, store } from "./store";
 
 class UserStore {
   user: User | null = null;
-  loading = true;
+  userLoading = true;
+  unsubscribeUser: Unsubscribe;
 
   constructor() {
     makeAutoObservable(this);
+
+    this.unsubscribeUser = onAuthStateChanged(auth, (user) => {
+      this.setUser(user);
+    });
+
+    reaction(
+      () => this.user,
+      (user) => {
+        if (user) {
+          store.profileStore.subscribeStore(user);
+        }
+      }
+    );
   }
 
-  reset = () => {
-    this.user = null;
-  };
-
   signInGoogle = async (response: AuthSessionResult) => {
-    this.loading = true;
-
     if (response?.type === "success") {
       const { id_token } = response.params;
       const credential = GoogleAuthProvider.credential(id_token);
       await signInWithCredential(auth, credential);
     }
-
-    runInAction(() => {
-      this.loading = false;
-    });
   };
 
   signOut = async () => {
-    await auth.signOut();
-    resetStore();
+    if (this.user) {
+      resetStore();
+      await auth.signOut();
+    }
   };
 
   setUser = (user: FirebaseUser | null) => {
@@ -53,7 +60,7 @@ class UserStore {
       this.user = null;
     }
 
-    this.loading = false;
+    this.userLoading = false;
   };
 
   updateUserProfile = async (

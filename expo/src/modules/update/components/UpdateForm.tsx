@@ -43,7 +43,7 @@ const UpdateForm = () => {
         disabled={disabledForm}
         onPress={() =>
           updateUserProfile(image, job, Number(age), () =>
-            navigation.navigate("Home")
+            navigation.replace("Home")
           )
         }
         style={[styles.button, disabledForm && styles.disabledButton]}

@@ -1,12 +1,15 @@
 import { createContext, useContext } from "react";
+import ProfileStore from "./profileStore";
 import UserStore from "./userStore";
 
 interface Store {
   userStore: UserStore;
+  profileStore: ProfileStore;
 }
 
 export const store: Store = {
   userStore: new UserStore(),
+  profileStore: new ProfileStore(),
 };
 
 export const StoreContext = createContext(store);
@@ -16,6 +19,5 @@ export const useStore = () => {
 };
 
 export const resetStore = () => {
-  const { userStore } = store;
-  userStore.reset();
+  store.profileStore.resetStore();
 };
