@@ -123,16 +123,20 @@ class MatchStore {
     RootNavigation.navigate("Match");
   };
 
-  selectMatch = (id: string) => {
-    if (this.matchRegistery.has(id)) {
-      this.currentMatch = this.matchRegistery.get(id) as Match;
-      RootNavigation.navigate("ChatMessages");
-    } else {
+  selectMatch = async (id: string) => {
+    if (!this.matchRegistery.has(id)) {
       this.currentMatch = null;
+      return;
     }
+
+    this.currentMatch = this.matchRegistery.get(id) as Match;
+    await store.messageStore.loadMessages(this.currentMatch.id);
+    RootNavigation.navigate("ChatMessages");
   };
 
   private setMatches = (snap: QuerySnapshot<DocumentData>) => {
+    this.checkHasMore(snap);
+
     snap.docs.forEach((doc) => {
       if (!doc.exists()) return;
 
@@ -147,8 +151,17 @@ class MatchStore {
       id: snap.id,
       users: snap.data().users,
       userMatched: snap.data().userMatched,
+      lastMessage: snap.data().lastMessage,
       timestamp: new Date(snap.data().timestamp?.toDate()),
     };
+  };
+
+  private checkHasMore = (snap: QuerySnapshot<DocumentData>) => {
+    if (snap.size < this.matchesLimit) {
+      this.hasMore = false;
+    } else {
+      this.hasMore = true;
+    }
   };
 
   private setLastMatchTimestamp = (

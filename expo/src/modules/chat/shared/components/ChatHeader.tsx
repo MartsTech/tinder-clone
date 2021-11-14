@@ -2,7 +2,7 @@ import { Foundation, Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/core";
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { AppNavigationProp } from "../../../types/navigation";
+import { AppNavigationProp } from "../../../../types/navigation";
 
 interface ChatHeaderProps {
   title: string;
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   callButton: {
     borderRadius: 9999,
     marginRight: 16,
-    padding: 12,
+    padding: 8,
     backgroundColor: "rgba(254, 202, 202, 1)",
     height: 40,
     width: 40,

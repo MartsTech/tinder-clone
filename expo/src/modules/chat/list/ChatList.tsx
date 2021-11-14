@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useStore } from "../../../stores/store";
-import ChatHeader from "../shared/ChatHeader";
+import ChatHeader from "../shared/components/ChatHeader";
 import ChatPreview from "./components/ChatPreview";
 
 const ChatList = () => {

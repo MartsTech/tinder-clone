@@ -6,5 +6,6 @@ export interface Match {
     [id: string]: Profile;
   };
   userMatched: string[];
+  lastMessage: string | null;
   timestamp: Date;
 }

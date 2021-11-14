@@ -47,6 +47,7 @@ class UserStore {
     if (this.user) {
       store.profileStore.resetStore();
       store.matchStore.resetStore();
+      store.messageStore.resetStore();
       await auth.signOut();
     }
   };

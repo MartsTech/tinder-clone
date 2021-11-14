@@ -10,17 +10,17 @@ interface ChatPreviewProps {
 }
 
 const ChatPreview: React.FC<ChatPreviewProps> = ({ match, onPress }) => {
+  const { users, userMatched, lastMessage } = match;
   const { user } = useStore().userStore;
 
-  const otherUser =
-    match.users[match.userMatched.find((id) => id !== user?.uid) as string];
+  const otherUser = users[userMatched.find((id) => id !== user?.uid) as string];
 
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <Image style={styles.avatar} source={{ uri: otherUser.photoURL }} />
       <View>
         <Text style={styles.name}>{otherUser.displayName}</Text>
-        <Text>{false ? "{lastMessage}" : "Say Hi!"}</Text>
+        <Text>{lastMessage ? lastMessage : "Say Hi!"}</Text>
       </View>
     </TouchableOpacity>
   );
