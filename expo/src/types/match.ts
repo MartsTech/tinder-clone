@@ -4,6 +4,6 @@ export interface Match {
   users: {
     [id: string]: Profile;
   };
-  userMatched: [string];
+  userMatched: string[];
   timestamp: Date;
 }

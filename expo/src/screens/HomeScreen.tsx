@@ -15,7 +15,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
     if (!userProfile && !profileLoading) {
       navigation.replace("Update");
     }
-  }, []);
+  }, [userProfile, profileLoading, navigation]);
 
   if (!userProfile && profileLoading) {
     return <Loading />;
