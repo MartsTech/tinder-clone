@@ -8,7 +8,7 @@ const HeaderChat = () => {
   const navigation = useNavigation<AppNavigationProp>();
 
   return (
-    <TouchableOpacity onPress={() => navigation.navigate("Chat")}>
+    <TouchableOpacity onPress={() => navigation.navigate("ChatList")}>
       <Ionicons name="chatbubbles-sharp" size={40} color="#FF5864" />
     </TouchableOpacity>
   );

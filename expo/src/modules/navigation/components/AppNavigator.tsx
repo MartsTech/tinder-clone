@@ -1,6 +1,7 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
-import ChatScreen from "../../../screens/ChatScreen";
+import ChatListScreen from "../../../screens/ChatListScreen";
+import ChatMessagesScreen from "../../../screens/ChatMessagesScreen";
 import HomeScreen from "../../../screens/HomeScreen";
 import MatchScreen from "../../../screens/MatchScreen";
 import UpdateScreen from "../../../screens/UpdateScreen";
@@ -16,7 +17,8 @@ const AppNavigator = () => {
     >
       <Stack.Group>
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Chat" component={ChatScreen} />
+        <Stack.Screen name="ChatList" component={ChatListScreen} />
+        <Stack.Screen name="ChatMessages" component={ChatMessagesScreen} />
       </Stack.Group>
       <Stack.Group
         screenOptions={{

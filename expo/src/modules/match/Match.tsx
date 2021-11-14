@@ -21,7 +21,7 @@ const Match = () => {
         style={styles.button}
         onPress={() => {
           navigation.goBack();
-          navigation.navigate("Chat");
+          navigation.navigate("ChatList");
         }}
       >
         <Text style={styles.buttonText}>Send a Message</Text>

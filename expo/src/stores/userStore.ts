@@ -10,7 +10,7 @@ import { makeAutoObservable, reaction } from "mobx";
 import * as RootNavigation from "../modules/navigation/components/RootNavigation";
 import { User } from "../types/user";
 import { auth, db } from "../utils/firebase";
-import { resetStore, store } from "./store";
+import { store } from "./store";
 
 class UserStore {
   user: User | null = null;
@@ -29,6 +29,7 @@ class UserStore {
       (user) => {
         if (user) {
           store.profileStore.subscribeStore(user);
+          store.matchStore.subscribeStore(user);
         }
       }
     );
@@ -44,7 +45,8 @@ class UserStore {
 
   signOut = async () => {
     if (this.user) {
-      resetStore();
+      store.profileStore.resetStore();
+      store.matchStore.resetStore();
       await auth.signOut();
     }
   };

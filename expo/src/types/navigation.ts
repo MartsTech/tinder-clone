@@ -6,7 +6,8 @@ export type AuthStackParamList = {
 
 export type AppStackParamList = {
   Home: undefined;
-  Chat: undefined;
+  ChatList: undefined;
+  ChatMessages: undefined;
   Update: undefined;
   Match: undefined;
 };
