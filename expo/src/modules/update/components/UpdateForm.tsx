@@ -1,12 +1,9 @@
-import { useNavigation } from "@react-navigation/core";
 import React, { useState } from "react";
 import { StyleSheet, Text, TextInput, TouchableOpacity } from "react-native";
 import { useStore } from "../../../stores/store";
-import { AppNavigationProp } from "../../../types/navigation";
 
 const UpdateForm = () => {
   const { updateUserProfile } = useStore().userStore;
-  const navigation = useNavigation<AppNavigationProp>();
 
   const [image, setImage] = useState("");
   const [job, setJob] = useState("");
@@ -41,11 +38,7 @@ const UpdateForm = () => {
       />
       <TouchableOpacity
         disabled={disabledForm}
-        onPress={() =>
-          updateUserProfile(image, job, Number(age), () =>
-            navigation.replace("Home")
-          )
-        }
+        onPress={() => updateUserProfile(image, job, Number(age))}
         style={[styles.button, disabledForm && styles.disabledButton]}
       >
         <Text style={styles.buttonText}>Update Profile</Text>

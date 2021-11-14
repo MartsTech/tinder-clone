@@ -10,7 +10,7 @@ import NoCard from "./NoCard";
 
 const Cards = () => {
   const swipeRef = useRef<Swiper<any>>(null);
-  const { profiles } = useStore().profileStore;
+  const { profiles, passProfile, matchProfile } = useStore().profileStore;
 
   return (
     <>
@@ -23,12 +23,8 @@ const Cards = () => {
           cardIndex={0}
           animateCardOpacity
           verticalSwipe={false}
-          onSwipedLeft={() => {
-            console.log("Swipe PASS");
-          }}
-          onSwipedRight={() => {
-            console.log("Swipe MATCH");
-          }}
+          onSwipedLeft={passProfile}
+          onSwipedRight={matchProfile}
           overlayLabels={{
             left: {
               title: "NOPE",

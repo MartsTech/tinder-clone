@@ -5,6 +5,7 @@ import { useStore } from "../../stores/store";
 import Loading from "../shared/components/loading";
 import AppNavigator from "./components/AppNavigator";
 import AuthNavigator from "./components/AuthNavigator";
+import { navigationRef } from "./components/RootNavigation";
 
 const Navigation = () => {
   const { user, userLoading } = useStore().userStore;
@@ -14,7 +15,7 @@ const Navigation = () => {
   }
 
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
       {!user ? <AuthNavigator /> : <AppNavigator />}
     </NavigationContainer>
   );

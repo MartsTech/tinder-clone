@@ -7,6 +7,7 @@ import {
 import { doc, serverTimestamp, setDoc, Unsubscribe } from "@firebase/firestore";
 import { AuthSessionResult } from "expo-auth-session";
 import { makeAutoObservable, reaction } from "mobx";
+import * as RootNavigation from "../modules/navigation/components/RootNavigation";
 import { User } from "../types/user";
 import { auth, db } from "../utils/firebase";
 import { resetStore, store } from "./store";
@@ -63,12 +64,7 @@ class UserStore {
     this.userLoading = false;
   };
 
-  updateUserProfile = async (
-    image: string,
-    job: string,
-    age: number,
-    callback: () => void
-  ) => {
+  updateUserProfile = async (image: string, job: string, age: number) => {
     if (!this.user) return;
 
     await setDoc(doc(db, "users", this.user.uid), {
@@ -80,7 +76,7 @@ class UserStore {
       timestamp: serverTimestamp(),
     });
 
-    callback();
+    RootNavigation.navigate("Home");
   };
 }
 

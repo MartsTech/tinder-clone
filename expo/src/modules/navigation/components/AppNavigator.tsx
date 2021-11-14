@@ -3,6 +3,7 @@ import { observer } from "mobx-react-lite";
 import React from "react";
 import ChatScreen from "../../../screens/ChatScreen";
 import HomeScreen from "../../../screens/HomeScreen";
+import MatchScreen from "../../../screens/MatchScreen";
 import UpdateScreen from "../../../screens/UpdateScreen";
 import { useStore } from "../../../stores/store";
 import { AppStackParamList } from "../../../types/navigation";
@@ -34,6 +35,13 @@ const AppNavigator = () => {
         }}
       >
         <Stack.Screen name="Update" component={UpdateScreen} />
+      </Stack.Group>
+      <Stack.Group
+        screenOptions={{
+          presentation: "transparentModal",
+        }}
+      >
+        <Stack.Screen name="Match" component={MatchScreen} />
       </Stack.Group>
     </Stack.Navigator>
   );
