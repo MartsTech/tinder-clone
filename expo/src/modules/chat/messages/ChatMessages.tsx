@@ -4,7 +4,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   StyleSheet,
-  TouchableWithoutFeedback
+  TouchableWithoutFeedback,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useStore } from "../../../stores/store";
