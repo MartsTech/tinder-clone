@@ -24,7 +24,7 @@
 
 <div align="center">
   <img width="400px" height="800px" style="object-fit: contain" src="https://raw.githubusercontent.com/MartsTech/tinder-clone/main/images/home.png" alt="home" />
-  <img width="400px" height="800px" style="object-fit: contain" src="https://raw.githubusercontent.com/MartsTech/uber-clone/main/images/chat.png" alt="chat" />
+  <img width="400px" height="800px" style="object-fit: contain" src="https://raw.githubusercontent.com/MartsTech/tinder-clone/main/images/chat.png" alt="chat" />
 </div>
 
 ---
